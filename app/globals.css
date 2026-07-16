@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #060E08;
+  color: #F5F5F0;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0D2416;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1A7A3E;
+  border-radius: 3px;
+}
+
+.pitch-bg {
+  background-image:
+    linear-gradient(rgba(127, 255, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(127, 255, 0, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}

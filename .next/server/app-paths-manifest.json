@@ -1,0 +1,9 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/generate-titles/route": "app/api/generate-titles/route.js",
+  "/generator/page": "app/generator/page.js",
+  "/api/generate-script/route": "app/api/generate-script/route.js",
+  "/kalender/page": "app/kalender/page.js",
+  "/page": "app/page.js",
+  "/planner/page": "app/planner/page.js"
+}

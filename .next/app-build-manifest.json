@@ -1,0 +1,53 @@
+{
+  "pages": {
+    "/_not-found/page": [
+      "static/chunks/webpack-c799d689eb6593bb.js",
+      "static/chunks/fd9d1056-0ab68262c0ab5993.js",
+      "static/chunks/23-c2181b4345e690c1.js",
+      "static/chunks/main-app-5315f63872a5f829.js",
+      "static/chunks/app/_not-found/page-2fa0742bd5a9d782.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack-c799d689eb6593bb.js",
+      "static/chunks/fd9d1056-0ab68262c0ab5993.js",
+      "static/chunks/23-c2181b4345e690c1.js",
+      "static/chunks/main-app-5315f63872a5f829.js",
+      "static/css/720b2683517b348e.css",
+      "static/chunks/app/layout-ede05245342658a7.js"
+    ],
+    "/generator/page": [
+      "static/chunks/webpack-c799d689eb6593bb.js",
+      "static/chunks/fd9d1056-0ab68262c0ab5993.js",
+      "static/chunks/23-c2181b4345e690c1.js",
+      "static/chunks/main-app-5315f63872a5f829.js",
+      "static/chunks/44530001-b24fb8c27bf46750.js",
+      "static/chunks/645-cfc473d95ffc0b5f.js",
+      "static/chunks/app/generator/page-43a18d3389872b09.js"
+    ],
+    "/kalender/page": [
+      "static/chunks/webpack-c799d689eb6593bb.js",
+      "static/chunks/fd9d1056-0ab68262c0ab5993.js",
+      "static/chunks/23-c2181b4345e690c1.js",
+      "static/chunks/main-app-5315f63872a5f829.js",
+      "static/chunks/44530001-b24fb8c27bf46750.js",
+      "static/chunks/645-cfc473d95ffc0b5f.js",
+      "static/chunks/app/kalender/page-5cf574e83f2df8f2.js"
+    ],
+    "/page": [
+      "static/chunks/webpack-c799d689eb6593bb.js",
+      "static/chunks/fd9d1056-0ab68262c0ab5993.js",
+      "static/chunks/23-c2181b4345e690c1.js",
+      "static/chunks/main-app-5315f63872a5f829.js",
+      "static/chunks/app/page-ffc06cd4473239c6.js"
+    ],
+    "/planner/page": [
+      "static/chunks/webpack-c799d689eb6593bb.js",
+      "static/chunks/fd9d1056-0ab68262c0ab5993.js",
+      "static/chunks/23-c2181b4345e690c1.js",
+      "static/chunks/main-app-5315f63872a5f829.js",
+      "static/chunks/44530001-b24fb8c27bf46750.js",
+      "static/chunks/645-cfc473d95ffc0b5f.js",
+      "static/chunks/app/planner/page-c7aeca9316005998.js"
+    ]
+  }
+}
