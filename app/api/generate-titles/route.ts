@@ -28,12 +28,12 @@ Distribusi wajib:
 
 Untuk SETIAP judul, tulis dalam format PERSIS berikut, dan pisahkan setiap item dengan baris "---":
 
-[TIPE] taktik | berita | highlight | shorts
-[JUDUL] (judul SEO-friendly, maksimal 60 karakter)
-[HOOK] (1 kalimat pembuka yang menarik)
+[TIPE] taktik atau berita atau highlight atau shorts
+[JUDUL] judul SEO-friendly, maksimal 60 karakter
+[HOOK] 1 kalimat pembuka yang menarik
 ---
 
-Jangan tambahkan penjelasan lain di luar format ini.`;
+PENTING: Jangan gunakan tanda bintang (*) atau markdown formatting apapun. Jangan tambahkan penjelasan lain di luar format ini.`;
 
     const geminiRes = await fetch(`${GEMINI_URL}?key=${apiKey}`, {
       method: 'POST',
@@ -71,9 +71,10 @@ Jangan tambahkan penjelasan lain di luar format ini.`;
       .map((block) => block.trim())
       .filter(Boolean)
       .map((block) => {
-        const typeMatch = block.match(/\[TIPE\]\s*(\w+)/i);
-        const titleMatch = block.match(/\[JUDUL\]\s*([\s\S]*?)(?=\n\[|$)/i);
-        const hookMatch = block.match(/\[HOOK\]\s*([\s\S]*?)(?=\n\[|$)/i);
+        const clean = block.replace(/\*+/g, '');
+        const typeMatch = clean.match(/\[TIPE\]\s*(\w+)/i);
+        const titleMatch = clean.match(/\[JUDUL\]\s*([\s\S]*?)(?=\n\[|$)/i);
+        const hookMatch = clean.match(/\[HOOK\]\s*([\s\S]*?)(?=\n\[|$)/i);
 
         return {
           contentType: (typeMatch?.[1] || 'taktik').toLowerCase().trim(),

@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
 
     const parsed = parseScriptResponse(rawText);
 
-    return NextResponse.json({ result: parsed });
+    return NextResponse.json({ result: parsed, _debug_raw: rawText });
   } catch (err) {
     console.error('generate-script error:', err);
     return NextResponse.json({ error: 'Terjadi kesalahan di server.' }, { status: 500 });
@@ -77,27 +77,27 @@ Buat script video YouTube tentang topik berikut:
 TOPIK: ${topic}
 ${context}
 
-Tulis dengan format PERSIS seperti ini (gunakan header dalam kurung siku, jangan diubah):
+Tulis dengan format PERSIS seperti ini (gunakan header dalam kurung siku PERSIS seperti contoh, JANGAN tambahkan tanda bintang, bold, atau markdown apapun di sekitar header):
 
 [JUDUL]
-(judul SEO-friendly, maksimal 60 karakter)
+judul SEO-friendly, maksimal 60 karakter
 
 [HOOK]
-(1-2 kalimat pembuka yang bikin penonton penasaran dalam 5 detik pertama)
+1-2 kalimat pembuka yang bikin penonton penasaran dalam 5 detik pertama
 
 [SCRIPT]
-(naskah lengkap 700-900 kata untuk video biasa, atau 150-200 kata jika Shorts. Struktur: intro singkat, 3-4 poin konten utama, kesimpulan + ajakan subscribe/comment. Gaya bahasa santai tapi informatif, pakai istilah sepakbola yang tepat, sesekali bahasa gaul yang natural, JANGAN kaku seperti robot.)
+naskah lengkap 700-900 kata untuk video biasa, atau 150-200 kata jika Shorts. Struktur: intro singkat, 3-4 poin konten utama, kesimpulan plus ajakan subscribe/comment. Gaya bahasa santai tapi informatif, pakai istilah sepakbola yang tepat, sesekali bahasa gaul yang natural, JANGAN kaku seperti robot.
 
 [DESKRIPSI]
-(deskripsi YouTube 100-150 kata dengan hook di awal, poin-poin konten, dan call-to-action)
+deskripsi YouTube 100-150 kata dengan hook di awal, poin-poin konten, dan call-to-action
 
 [TAGS]
-(10-15 tag/hashtag relevan, pisahkan dengan koma)
+10-15 tag/hashtag relevan, pisahkan dengan koma
 
 [THUMBNAIL_TEXT]
-(maksimal 5 kata untuk teks di thumbnail, huruf kapital, harus punya daya tarik visual)
+maksimal 5 kata untuk teks di thumbnail, huruf kapital, harus punya daya tarik visual
 
-Jangan tambahkan komentar, catatan, atau penjelasan di luar format di atas.`;
+PENTING: Langsung mulai jawabanmu dengan "[JUDUL]" tanpa kalimat pembuka apapun. Jangan gunakan tanda bintang (*) atau markdown formatting apapun di seluruh jawaban. Jangan tambahkan komentar, catatan, atau penjelasan di luar format di atas.`;
 }
 
 interface ParsedScript {
@@ -111,9 +111,13 @@ interface ParsedScript {
 
 function parseScriptResponse(raw: string): ParsedScript {
   const extract = (label: string): string => {
-    const regex = new RegExp(`\\[${label}\\]\\s*([\\s\\S]*?)(?=\\n\\[|$)`, 'i');
+    const regex = new RegExp(
+      `\\*{0,2}\\[${label}\\]\\*{0,2}\\s*([\\s\\S]*?)(?=\\n\\*{0,2}\\[|$)`,
+      'i'
+    );
     const match = raw.match(regex);
-    return match ? match[1].trim() : '';
+    if (!match) return '';
+    return match[1].trim().replace(/^\*+|\*+$/g, '').trim();
   };
 
   const tagsRaw = extract('TAGS');
